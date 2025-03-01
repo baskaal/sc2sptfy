@@ -1,4 +1,4 @@
-import { Spacer, Input, List, ListItem, Box, Button } from '3oilerplate'
+import { Spacer, Input, List, ListItem, Box, Button } from '@/components'
 import useApi from '@/hooks/useApi'
 import Image from 'next/image'
 import { useRouter } from 'next/router';
@@ -20,28 +20,28 @@ export default function Who() {
   }
 
   return (
-    <Spacer size="m" s={{ pt: 'xl', width: '100%', justifyContent: 'space-between' }}>
-      <Spacer size="m" s={{ overflow: 'hidden'}}>
+    <Spacer size="m" css={{ pt: 'xl', width: '100%', justifyContent: 'space-between' }}>
+      <Spacer size="m" css={{ overflow: 'hidden'}}>
         <Input
           placeholder="Search for a user"
           onChange={onSearch}
-          s={{ width: '100% !important' }}
+          css={{ width: '100% !important' }}
         />
         { !!users.length && (
-          <Box s={{ width: '100%', overflowY: 'auto' }}>
+          <Box css={{ width: '100%', overflowY: 'auto' }}>
             <List>
               { users.map((user: any, index: number) => (
                 <ListItem
                   key={`user-${index}`}
                   onClick={() => setSelectedUser(user)}
-                  s={{
+                  css={{
                     bg: user?.id === selectedUser?.id ? 'primary' : null,
                     display: 'flex',
                     alignItems: 'center',
                     cursor: 'pointer',
                   }}
                 >
-                  <Box s={{ display: 'flex', overflow: 'hidden', borderRadius: '100%', mr: 'm', border: '1px solid', borderColor: 'primary' }}>
+                  <Box css={{ display: 'flex', overflow: 'hidden', borderRadius: '100%', mr: 'm', border: '1px solid', borderColor: 'primary' }}>
                     <Image
                       src={user.avatar_url}
                       width={40}
@@ -56,7 +56,7 @@ export default function Who() {
           </Box>
         )}
       </Spacer>
-      <Button s={{ visibility: !selectedUser && 'hidden' }} onClick={() => push('what')}>Select</Button>
+      <Button css={{ visibility: !selectedUser && 'hidden' }} onClick={() => push('what')}>Select</Button>
     </Spacer>
   )
 }

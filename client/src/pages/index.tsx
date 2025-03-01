@@ -1,12 +1,11 @@
-import { Spacer, Text } from '3oilerplate'
-import { Login, Logo } from '../components'
+import { Login, Logo, Spacer, Text } from '@/components'
 
 export default function Home() {
   return (
-    <Spacer size="xl" s={{ alignItems: 'center', justifyContent: 'center' }}>
-      <Spacer s={{ alignItems: 'center', justifyContent: 'center' }}>
+    <Spacer gutter={10} css={{ alignItems: 'center', justifyContent: 'center' }}>
+      <Spacer css={{ alignItems: 'center', justifyContent: 'center' }}>
         <Logo />
-        <Text s={{ textAlign: 'center' }}>Transfer your Soundcloud data to Spotify</Text>
+        <Text css={{ textAlign: 'center' }}>Transfer your Soundcloud data to Spotify</Text>
       </Spacer>
       <Login />
     </Spacer>

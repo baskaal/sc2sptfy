@@ -1,9 +1,9 @@
-import { Spacer, Text, Box, Button, Checkbox } from '3oilerplate'
-import useApi from '@/hooks/useApi'
-import useAxios from 'axios-hooks';
-import Image from 'next/image';
 import { useEffect, useState } from 'react'
+import Image from 'next/image';
+import useAxios from 'axios-hooks';
 import { useLocalStorage } from 'usehooks-ts';
+import useApi from '@/hooks/useApi'
+import { Spacer, Text, Box, Button, Checkbox } from '@/components'
 
 export default function What() {
   const { generate } = useApi()
@@ -43,14 +43,14 @@ export default function What() {
   const someSelected = selection.tracks || selection.likes || Object.values(selection.playlists).some((value) => value);
 
   return (
-    <Spacer size="m" s={{ pt: 'xl', justifyContent: 'space-between' }}>
-      <Box s={{ overflowY: 'auto' }}>
-        <Spacer size="m" s={{ justifyContent: 'center', width: '100%' }}>
+    <Spacer size="m" css={{ pt: 'xl', justifyContent: 'space-between' }}>
+      <Box css={{ overflowY: 'auto' }}>
+        <Spacer size="m" css={{ justifyContent: 'center', width: '100%' }}>
 
           { !!userDetail?.tracks.length && (
             <label>
               <Spacer
-                s={{
+                css={{
                   flexDirection: 'row',
                   alignItems: 'center',
                   border: 'thick',
@@ -61,9 +61,9 @@ export default function What() {
                 }}
               >
                 <Checkbox onChange={() => toggle(`tracks`)} />
-                <Box df fww s={{ flexBasis: '50%', maxWidth: '80px' }}>
+                <Box df fww css={{ flexBasis: '50%', maxWidth: '80px' }}>
                   { userDetail?.tracks.slice(0, 4).map(({ title, artwork_url }: any, trackIndex: number) => (
-                    <Box df s={{ overflow: 'hidden' }} key={trackIndex}>
+                    <Box df css={{ overflow: 'hidden' }} key={trackIndex}>
                       <Image
                         src={artwork_url || ''}
                         width={40}
@@ -73,9 +73,9 @@ export default function What() {
                     </Box>
                   )) }
                 </Box>
-                <Spacer size="xs" s={{ width: 'auto', flexDirection: 'row' }}>
+                <Spacer size="xs" css={{ width: 'auto', flexDirection: 'row' }}>
                   <Text>Tracks</Text>
-                  <Text s={{ color: 'greys.60' }}>({ userDetail?.tracks.length })</Text>
+                  <Text css={{ color: 'greys.60' }}>({ userDetail?.tracks.length })</Text>
                 </Spacer>
               </Spacer>
             </label>
@@ -84,7 +84,7 @@ export default function What() {
           { !!userDetail?.likes.length && (
             <label>
               <Spacer
-                s={{
+                css={{
                   flexDirection: 'row',
                   alignItems: 'center',
                   border: 'thick',
@@ -95,9 +95,9 @@ export default function What() {
                 }}
               >
                 <Checkbox onChange={() => toggle(`likes`)} />
-                <Box df fww s={{ flexBasis: '50%', maxWidth: '80px' }}>
+                <Box df fww css={{ flexBasis: '50%', maxWidth: '80px' }}>
                   { userDetail?.likes.slice(0, 4).map(({ title, artwork_url }: any, trackIndex: number) => (
-                    <Box df s={{ overflow: 'hidden' }} key={trackIndex}>
+                    <Box df css={{ overflow: 'hidden' }} key={trackIndex}>
                       <Image
                         src={artwork_url || ''}
                         width={40}
@@ -107,9 +107,9 @@ export default function What() {
                     </Box>
                   )) }
                 </Box>
-                <Spacer size="xs" s={{ width: 'auto', flexDirection: 'row' }}>
+                <Spacer size="xs" css={{ width: 'auto', flexDirection: 'row' }}>
                   <Text>Likes</Text>
-                  <Text s={{ color: 'greys.60' }}>({ userDetail?.likes.length })</Text>
+                  <Text css={{ color: 'greys.60' }}>({ userDetail?.likes.length })</Text>
                 </Spacer>
               </Spacer>
             </label>
@@ -118,7 +118,7 @@ export default function What() {
           { !!userDetail?.playlists.length && userDetail?.playlists.map(({ id, title, tracks }: any, playlistIndex: number) => (
             <label key={playlistIndex}>
               <Spacer
-                s={{
+                css={{
                   flexDirection: 'row',
                   alignItems: 'center',
                   border: 'thick',
@@ -129,9 +129,9 @@ export default function What() {
                 }}
               >
                 <Checkbox onChange={() => toggle('playlists', id)} />
-                <Box df fww s={{ flexBasis: '50%', maxWidth: '80px' }}>
+                <Box df fww css={{ flexBasis: '50%', maxWidth: '80px' }}>
                   { tracks.slice(0, 4).map(({ title, artwork_url }: any, trackIndex: number) => (
-                    <Box df s={{ overflow: 'hidden' }} key={trackIndex}>
+                    <Box df css={{ overflow: 'hidden' }} key={trackIndex}>
                       <Image
                         src={artwork_url || ''}
                         width={40}
@@ -141,9 +141,9 @@ export default function What() {
                     </Box>
                   )) }
                 </Box>
-                <Spacer size="xs" s={{ width: 'auto', flexDirection: 'row' }}>
+                <Spacer size="xs" css={{ width: 'auto', flexDirection: 'row' }}>
                   <Text>{ title }</Text>
-                  <Text s={{ color: 'greys.60' }}>({ tracks.length })</Text>
+                  <Text css={{ color: 'greys.60' }}>({ tracks.length })</Text>
                 </Spacer>
               </Spacer>
             </label>
@@ -153,7 +153,7 @@ export default function What() {
         </Spacer>
       </Box>
 
-      <Button s={{ visibility: !someSelected && 'hidden' }} onClick={() => generate(selectedUser, selection)}>Generate</Button>
+      <Button css={{ visibility: !someSelected && 'hidden' }} onClick={() => generate(selectedUser, selection)}>Generate</Button>
     </Spacer>
   )
 }

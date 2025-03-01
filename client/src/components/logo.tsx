@@ -1,6 +1,7 @@
-import { s, Title } from '3oilerplate'
+import { comp } from 'csscomp'
+import { Title } from '@/components'
 
-const SLogoSc = s.div(({ theme, color }: any) => ({
+const SLogoSc = comp.div(({ theme, color }: any) => ({
   display: 'inline-flex',
   background: theme.colors.scGradient,
   '-webkit-background-clip': 'text',
@@ -8,7 +9,7 @@ const SLogoSc = s.div(({ theme, color }: any) => ({
   marginRight: '.05rem'
 }))
 
-const SLogoSptfy = s.div(({ theme, color }: any) => ({
+const SLogoSptfy = comp.div(({ theme, color }: any) => ({
   display: 'inline-flex',
   background: theme.colors.sptfyGradient,
   '-webkit-background-clip': 'text',
@@ -18,7 +19,7 @@ const SLogoSptfy = s.div(({ theme, color }: any) => ({
 
 export function Logo({ small }: any) {
   return (
-    <Title s={{ fontFamily: 'logo', fontSize: small ? '2.25rem' : '3.5rem', userSelect: 'none' }}>
+    <Title css={{ fontFamily: 'logo', fontSize: small ? '2.25rem' : '3.5rem', userSelect: 'none' }}>
       <SLogoSc color="sc">sc</SLogoSc>2<SLogoSptfy color="sptfy">sptfy</SLogoSptfy>
     </Title>
   )

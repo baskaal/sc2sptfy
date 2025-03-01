@@ -1,5 +1,5 @@
-import { Button } from '3oilerplate'
-import useSpotify from '../hooks/useSpotify'
+import { Button } from '@/components'
+import useSpotify from '@/hooks/useSpotify'
 
 export function Login() {
   const { login } = useSpotify()

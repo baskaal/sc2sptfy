@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import styled from 'styled-components'
-import { s } from '3oilerplate'
+import { comp } from 'csscomp'
 import { debounce } from 'lodash'
-import chroma from 'chroma-js'
 import { THEME } from '@/style'
 
-export const SLoaderWrapper = s.div({
+export const SLoaderWrapper = comp.div({
   display: 'flex',
   position: 'relative',
   alignItems: 'center',
@@ -14,13 +12,13 @@ export const SLoaderWrapper = s.div({
   height: '12rem',
 })
 
-export const SLoader = s.svg({
+export const SLoader = comp.svg({
   width: '100%',
   height: '100%',
   overflow: 'visible',
 })
 
-export const SLoaderRect = styled.rect<any>(
+export const SLoaderRect = comp.rect<any>(
   ({ strokeDashoffset, color }) => ({
     width: '100%',
     height: '100%',
@@ -34,7 +32,7 @@ export const SLoaderRect = styled.rect<any>(
   })
 )
 
-export const SLoaderProgress = s.div(({ color }: any) => ({
+export const SLoaderProgress = comp.div(({ color }: any) => ({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -60,8 +58,6 @@ export function Loader({ progress = 0 }: { progress: number }) {
     setValues({
       width: dimensions.width,
       height: dimensions.height,
-      // doing * 0.8 here because it's a rounded shape
-      // and this value needs to match the outline exactly
       perimeter: (dimensions.width * 2 + dimensions.height * 2) * 0.8,
     })
   }
@@ -79,7 +75,7 @@ export function Loader({ progress = 0 }: { progress: number }) {
   }, [loaderRef.current])
 
   const strokeDashoffset = values?.perimeter ? values.perimeter - (values.perimeter * (progress / 100)) : 0;
-  const progressColor = chroma.mix(THEME.colors.sc, THEME.colors.sptfy, progress / 100).hex();
+  const progressColor = mix(THEME.colors.sc, THEME.colors.sptfy, progress / 100).hex();
 
   return (
     <div ref={loaderRef}>

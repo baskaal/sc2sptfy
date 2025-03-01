@@ -1,41 +1,34 @@
-import { darken, brighten, colors } from '3oilerplate'
-import chroma from 'chroma-js'
+import { colors, darken, lighten } from 'csscomp'
 
-export const fonts = {
-  base: "'Cabin', sans-serif",
-  title: "'Cabin', sans-serif",
-  logo: "'Teko', sans-serif",
-}
-
-const black = brighten('#000', .5);
+const black = lighten('#000', .5);
 const white = darken('#fff', .5);
-
 const PRIMARY = white
 const SECONDARY = '#E90064'
 
 const SUCCESS = '#59CE8F'
 
-const sc = chroma('#ff5500').hex()
-const sptfy = chroma('#1ed760').hex()
+const sc = '#ff5500'
+const sptfy = '#1ed760'
 
-const scGradient = `-webkit-linear-gradient(${darken(sc, 0)} 50%, ${darken(sc, .75)})`
-const sptfyGradient = `-webkit-linear-gradient(${darken(sptfy, 0)} 50%, ${darken(sptfy, .75)})`
+export const scGradient = `-webkit-linear-gradient(${darken(sc, 0)} 50%, ${darken(sc, 10)})`
+export const sptfyGradient = `-webkit-linear-gradient(${darken(sptfy, 0)} 50%, ${darken(sptfy, 10)})`
 
 export const THEME = {
   rootFontSizes: ['10px', '14px', '16px'],
-  fonts,
+  fonts: {
+    base: "'Cabin', sans-serif",
+    title: "'Cabin', sans-serif",
+    logo: "'Teko', sans-serif",
+  },
   colors: {
-    black,
-    white,
-    greys: colors.greys,
-    primary: colors.greys['60'],
+    black: lighten('#000', .5),
+    white: darken('#fff', .5),
     primaryDark: darken(PRIMARY, .5),
-    primaryLight: brighten(PRIMARY, 1),
+    primaryLight: lighten(PRIMARY, 1),
     secondary: SECONDARY,
     secondaryDark: darken(SECONDARY, 1),
-    secondaryLight: brighten(SECONDARY, 1.5),
-    background: brighten('#000', .5),
-    backgroundDark: darken('#212121', .5),
+    secondaryLight: lighten(SECONDARY, 1.5),
+    background: colors.grey['90'],
     color: white,
     success: SUCCESS,
     sc,
@@ -56,15 +49,6 @@ export const THEME = {
         paddingY: 'm',
         fontSize: '2rem'
       }
-    },
-    Button: {
-      variants: {
-        sptfy: {
-          background: sptfyGradient,
-          color: 'black',
-          border: 0,
-        }
-      }
-    },
+    }
   },
 }
